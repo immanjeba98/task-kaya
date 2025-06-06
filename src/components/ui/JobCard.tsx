@@ -1,5 +1,5 @@
 import { Job } from '@/types/job'
-import { ArrowRight, Building2, IndianRupee, MapIcon, PinIcon, TypeIcon, WorkflowIcon } from 'lucide-react';
+import { ArrowRight, Building2, IndianRupee, MapIcon,  WorkflowIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 

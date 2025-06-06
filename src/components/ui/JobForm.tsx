@@ -1,10 +1,11 @@
+
 'use client';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { JobFormData } from '@/types/job';
 import { useJobs } from '@/contexts/JobContext';
-import { AlertCircle, Loader2, ArrowLeft } from 'lucide-react';
+import { Loader2, ArrowLeft } from 'lucide-react';
 
 export default function JobForm() {
   const router = useRouter();
@@ -21,11 +22,10 @@ export default function JobForm() {
     applicationUrl: '',
   });
   
-  const [errors, setErrors] = useState<JobFormData>({});
-  const [submitError, setSubmitError] = useState<string>('');
+  const [errors, setErrors] = useState<any>({});
 
   const validateForm = (): boolean => {
-    const newErrors: JobFormData = {};
+    const newErrors: any = {};
 
     if (!formData.title.trim()) {
       newErrors.title = 'Job title is required';
@@ -53,7 +53,6 @@ export default function JobForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitError('');
 
     if (!validateForm()) {
       return;
@@ -63,7 +62,7 @@ export default function JobForm() {
       await addJob(formData);
       router.push('/');
     } catch (error) {
-      setSubmitError('Failed to add job. Please try again.');
+      console.log(error);
     }
   };
 
@@ -73,12 +72,12 @@ export default function JobForm() {
     
     // Clear error when user starts typing
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+      setErrors((prev:any) => ({ ...prev, [name]: '' }));
     }
   };
 
   // Base input classes
-  const inputClasses = "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors";
+  const inputClasses = "w-full px-3 py-2 text-gray-600 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors";
   const errorInputClasses = "border-red-300 focus:ring-red-500 focus:border-red-500";
 
   return (

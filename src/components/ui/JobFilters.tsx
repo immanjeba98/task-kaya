@@ -1,7 +1,7 @@
 'use client';
 
 import { useJobs } from '@/contexts/JobContext';
-import { Search, MapPin, Building, Briefcase, X } from 'lucide-react';
+import { X } from 'lucide-react';
 
 export default function JobFilters() {
     const { state: { filters }, dispatch } = useJobs();
@@ -17,7 +17,7 @@ export default function JobFilters() {
         });
     };
 
-    const hasActiveFilters = Object.values(filters).some(value => value !== '');
+    const hasActiveFilters = Object.values(filters).some(value  => value !== '');
 
     return (
         <div className="card mb-6">
@@ -45,7 +45,7 @@ export default function JobFilters() {
                             placeholder="Search jobs..."
                             value={filters.search}
                             onChange={(e) => handleFilterChange('search', e.target.value)}
-                            className="input w-full border border-gray-300 rounded-md px-2 py-1"
+                            className="input w-full border text-gray-600 border-gray-300 rounded-md px-2 py-1"
                         />
                     </div>
 
@@ -54,7 +54,7 @@ export default function JobFilters() {
                         <select
                             value={filters.type}
                             onChange={(e) => handleFilterChange('type', e.target.value)}
-                            className="input w-full px-2 h-9  border border-gray-300 rounded-md"
+                            className="input w-full px-2 h-9 text-gray-600  border border-gray-300 rounded-md"
                         >
                             <option value="">All Types</option>
                             <option value="full-time">Full Time</option>
@@ -71,7 +71,7 @@ export default function JobFilters() {
                             placeholder="Location..."
                             value={filters.location}
                             onChange={(e) => handleFilterChange('location', e.target.value)}
-                            className="input w-full px-2 py-1 border border-gray-300 rounded-md"
+                            className="input w-full px-2 py-1 border text-gray-600 border-gray-300 rounded-md"
                         />
                     </div>
 
@@ -82,7 +82,7 @@ export default function JobFilters() {
                             placeholder="Company..."
                             value={filters.company}
                             onChange={(e) => handleFilterChange('company', e.target.value)}
-                            className="input w-full px-2 py-1 border border-gray-300 rounded-md"
+                            className="input w-full px-2 py-1 text-gray-600 border border-gray-300 rounded-md"
                         />
                     </div>
                 </div>

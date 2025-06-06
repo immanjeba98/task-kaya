@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useReducer, useEffect } from 'react'
-import { Job, JobFormData, JobFilters, JobState, JobAction } from '@/types/job';
+import { Job, JobFormData, JobState, JobAction } from '@/types/job';
 import jobReducer from '@/reducer/JobReducer';
 
 const initialState: JobState = {
@@ -35,6 +35,8 @@ export function JobProvider({ children }: { children: React.ReactNode }) {
             const data = await response.json();
             dispatch({ type: "SET_JOBS", payload: data });
         } catch (error) {
+            console.log(error);
+
             dispatch({ type: "SET_ERROR", payload: "Failed to fetch jobs" });
         } finally {
             dispatch({ type: "SET_LOADING", payload: false });
@@ -63,6 +65,7 @@ export function JobProvider({ children }: { children: React.ReactNode }) {
             const data = await response.json();
             dispatch({ type: "ADD_JOB", payload: data });
         } catch (error) {
+            console.log(error);
             dispatch({ type: "SET_ERROR", payload: "Failed to add job" });
         } finally {
             dispatch({ type: "SET_LOADING", payload: false });
