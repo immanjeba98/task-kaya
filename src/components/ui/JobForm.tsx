@@ -69,14 +69,11 @@ export default function JobForm() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev:any) => ({ ...prev, [name]: '' }));
     }
   };
 
-  // Base input classes
   const inputClasses = "w-full px-3 py-2 text-gray-600 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors";
   const errorInputClasses = "border-red-300 focus:ring-red-500 focus:border-red-500";
 
@@ -98,7 +95,6 @@ export default function JobForm() {
          
 
           <div className="space-y-6">
-            {/* Job Title */}
             <div>
               <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
                 Job Title *

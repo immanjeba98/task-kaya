@@ -9,7 +9,6 @@ export default function Home() {
     const { state, dispatch } = useJobs();
     const { filteredJobs, loading, error, currentPage, jobsPerPage } = state;
 
-    // Pagination calculations
     const totalJobs = filteredJobs.length;
     const totalPages = Math.ceil(totalJobs / jobsPerPage);
     const startIndex = (currentPage - 1) * jobsPerPage;
@@ -48,7 +47,7 @@ export default function Home() {
             {filteredJobs.length > 0 ? (
                 <>
                     <div className="mb-4 text-sm text-gray-600">
-                        {totalJobs} jobs found • Page {currentPage} of {totalPages}
+                        {totalJobs} jobs found - Page {currentPage} of {totalPages}
                     </div>
                     <JobCard jobs={currentJobs} />
                     <Pagination 
